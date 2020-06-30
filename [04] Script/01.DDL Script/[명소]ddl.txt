@@ -1,0 +1,110 @@
+--명소
+create table tbltouristspot(
+	touristspot_seq number,
+	touristspotname varchar2(200),
+	touristspotpic varchar2(60),
+	touristspotcont varchar2(3000),
+	local_seq number,
+	touristSpotTheme_seq number,
+	enjoy_seq number,
+	food_seq number,
+	trainstation_seq number,
+	busstation_seq,
+);
+create sequence touristspot_seq;
+
+--drop table tbltouristspot;
+--drop sequence touristspot_seq;
+
+--지역
+create table tbllocal(
+	local_seq number,
+	localname varchar2(300)
+);
+create sequence local_seq;
+
+--drop table tbllocal;
+--drop sequence local_seq;
+
+--베스트
+create table tblbesttourspot(
+	besttourspot_seq number,
+	bestfood varchar2(100),
+	bestenjoy varchar2(100),
+	bestculture varchar2(100),
+	besthotel varchar2(100),
+	touristspot_seq number
+);
+create sequence besttourspot_seq;
+
+--drop table tblbesttourspot;
+--drop sequence besttourspot_seq;
+
+--관광지별 테마
+create table tbltouristspottheme(
+	touristspottheme_seq number,
+	theme_seq number
+);
+create sequence touristspottheme_seq;
+
+--drop table tbltouristspottheme;
+--drop sequence touristspottheme_seq;
+
+--테마
+create table tbltheme(
+	theme_seq number,
+	themename varchar2(60),
+	themeicon varchar2(60)
+);
+create sequence theme_seq;
+
+--drop table tbltheme;
+--drop sequence theme_seq;
+
+--음식점
+create table tblfood(
+	food_seq number,
+	foodname varchar2(100),
+	foodpic varchar2(60),
+	foodcontent varchar2(3000)
+);
+create sequence food_seq;
+
+--drop table tblfood;
+--drop sequence food_seq;
+
+--명소예약 음식점
+create table tblreservefood(
+	reservefood_seq number,
+	food_seq number
+);
+create sequence reservefood_seq;
+
+--drop table tblreservefood;
+--drop sequence reservefood_seq;
+
+--즐길거리
+create table tblenjoy(
+	enjoy_seq number,
+	enjoyname varchar2(300),
+	enjoypic varchar2(60),
+	enjoycontent varchar2(3000)
+);
+create sequence enjoy_seq;
+
+--drop table tblenjoy;
+--drop sequence enjoy_seq;
+
+--명소예약 즐길거리
+create table tblreserveenjoy(
+	reserveenjoy_seq number,
+	enjoy_seq
+);
+create sequence reserveenjoy_seq;
+
+--drop table tblreserveenjoy;
+--drop sequence reserveenjoy_seq;
+
+
+
+

@@ -1,0 +1,76 @@
+--터미널
+create table tblbusstation(
+	busstation_seq number,
+	busstationloca varchar2(100)
+	busstationname varchar2(300)
+);
+create sequence busstation_seq;
+
+--drop table tblbusstation;
+--drop sequence busstation_seq;
+
+--버스
+create table tblbus(
+	bus_seq number,
+	busstation_seq number,
+	bustime date,
+	busprice number,
+	busstart varchar2(100),
+	busarrive varchar2(100),
+	trans_seq number 
+);
+create sequence bus_seq;
+
+--drop table tblbus;
+--drop sequence bus_seq
+
+--교통수단
+create table tbltrans(
+	trans_seq number,
+	transcategory varchar2(300)
+);
+create sequence trans_seq;
+
+--drop table tbltrans;
+--drop sequence trans_seq;
+
+--기차
+create table tbltrain(
+	train_seq number,
+	traintype varchar2(100),
+	traintime date,
+	trainprice number,
+	trainstart varchar2(100),
+	trainstart varchar2(100),
+	trainstation_seq number,
+	trans_seq number
+);
+create sequence train_seq;
+
+--drop table tbltrain;
+--drop sequence train_seq;
+
+--교통수단
+create table tbltransreserv(
+	transreserv_seq number,
+	transreservdate date,
+	transreservcount number,
+	train_seq number,
+	bus_seq number
+);
+create sequence transreserv_seq;
+
+--drop table tbltransreserv;
+--drop sequence transreserv_seq;
+
+--기차역
+create table tbltrainstation(
+	trainstation_seq number,
+	trainstationname varchar2(100),
+	trainstationloca varchar2(1000)
+);
+create sequence trainstation_seq;
+
+--drop table tbltrainstation;
+--drop sequence trainstation_seq;
+
