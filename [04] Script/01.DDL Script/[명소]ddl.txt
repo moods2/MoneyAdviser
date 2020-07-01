@@ -9,7 +9,7 @@ create table tbltouristspot(
 	enjoy_seq number,
 	food_seq number,
 	trainstation_seq number,
-	busstation_seq,
+	busstation_seq number
 );
 create sequence touristspot_seq;
 

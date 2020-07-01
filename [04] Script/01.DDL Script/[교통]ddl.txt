@@ -1,7 +1,7 @@
 --터미널
 create table tblbusstation(
 	busstation_seq number,
-	busstationloca varchar2(100)
+	busstationloca varchar2(100),
 	busstationname varchar2(300)
 );
 create sequence busstation_seq;
@@ -41,7 +41,7 @@ create table tbltrain(
 	traintime date,
 	trainprice number,
 	trainstart varchar2(100),
-	trainstart varchar2(100),
+	trainarrive varchar2(100),
 	trainstation_seq number,
 	trans_seq number
 );
