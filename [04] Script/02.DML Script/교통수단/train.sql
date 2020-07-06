@@ -47,21 +47,23 @@ ALTER TABLE tbltrain
 RENAME COLUMN traintime TO trainstarttime;
 
 commit;
-select * from tbltrain;
+select * from tbltrain order by train_seq;
 select train_seq as 기차번호 , traintype as 기차종류, trainstart as 출발지,to_char(TrainstartTime,'hh24:mi') as 출발시간, trainarrive as 도착지, to_char(TrainendTime,'hh24:mi') as 도착시간 from tbltrain where trainstart = '서울' and traintype='무궁화' order by trainstarttime;  
 select to_char(TrainstartTime,'hh24:mi') from tbltrain;
  
+delete from tbltrain where traincode<40;
+ commit;
 create sequence train_seq;
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('11:29', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('12:02', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('12:36', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('13:44', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('15:35', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('17:08', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('19:00', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('19:51', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('20:40', 'hh24:mi'));
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('23:08', 'hh24:mi'));
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('11:29', 'hh24:mi'),1);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('12:02', 'hh24:mi'),2);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('12:36', 'hh24:mi'),3);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('13:44', 'hh24:mi'),4);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('15:35', 'hh24:mi'),5);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('17:08', 'hh24:mi'),6);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('19:00', 'hh24:mi'),7);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('19:51', 'hh24:mi'),8);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('20:40', 'hh24:mi'),9);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '15800', '서울', '부산', 1, 1, to_date('23:08', 'hh24:mi'),10);
 
 
 insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('05:45', 'hh24:mi'), '15800', '부산', '서울', 1, 1, to_date('11:13', 'hh24:mi'), 11);
@@ -74,13 +76,15 @@ insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('13:36', 'h
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------시간 업데이트!!!!!!! 하세요 ------------------------------------------------------------------------------
 insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('14:05', 'hh24:mi'), '15800', '부산', '서울', 1, 1, to_date('19:36', 'hh24:mi'), 18);
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('15:05', 'hh24:mi'), '15800', '부산', '서울', 1, 1, to_date('18:02', 'hh24:mi'), 19);
-insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('16:05', 'hh24:mi'), '15800', '부산', '서울', 1, 1, to_date('19:02', 'hh24:mi'), 20);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('15:05', 'hh24:mi'), '15800', '부산', '서울', 1, 1, to_date('20:36', 'hh24:mi'), 19);
+insert into tbltrain values (train_seq.nextVal, '무궁화', to_date('16:05', 'hh24:mi'), '15800', '부산', '서울', 1, 1, to_date('21:36', 'hh24:mi'), 20);
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 update 
 
 update tbltrain set train_seq = (train_seq)-10 where train_seq >11; 
+delete from tbltrain;
 
+select * from tbltrain order by train_seq;
 
 insert into tbltrain values (21, 'KTX', to_date('05:15', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('07:51', 'hh24:mi'), 21);
 
@@ -105,7 +109,7 @@ insert into tbltrain values (36, 'KTX', to_date('09:45', 'hh24:mi'), '49800', '�
 insert into tbltrain values (37, 'KTX', to_date('10:17', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('13:34', 'hh24:mi'), 37);
 insert into tbltrain values (38, 'KTX', to_date('12:00', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('14:42', 'hh24:mi'), 38);
 insert into tbltrain values (39, 'KTX', to_date('13:05', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('16:13', 'hh24:mi'), 39);
-insert into tbltrain values (40, 'KTX', to_date('14:00', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('16:27', 'hh24:mi'), 40);
+insert into tbltrain values (train_seq.nextVal, 'KTX', to_date('14:00', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('16:27', 'hh24:mi'), 40);
 
 
 
@@ -115,26 +119,33 @@ commit;
 rollback;
 
 
-insert into tbltrain values (41, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('10:58', 'hh24:mi'), 41);
-insert into tbltrain values (42, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('13:56', 'hh24:mi'), 42);
-insert into tbltrain values (43, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('15:47', 'hh24:mi'), 43);
-insert into tbltrain values (44, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('16:33', 'hh24:mi'), 44);
-insert into tbltrain values (45, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('18:46', 'hh24:mi'), 45);
-insert into tbltrain values (46, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('20:26', 'hh24:mi'), 46);
-insert into tbltrain values (47, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('00:59', 'hh24:mi'), 47);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('10:58', 'hh24:mi'), 41);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('13:56', 'hh24:mi'), 42);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('15:47', 'hh24:mi'), 43);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('16:33', 'hh24:mi'), 44);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('18:46', 'hh24:mi'), 45);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('20:26', 'hh24:mi'), 46);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '49800', '서울', '부산', 1, 1, to_date('00:59', 'hh24:mi'), 47);
 
 
-insert into tbltrain values (48, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('10:58', 'hh24:mi'), 48);
-insert into tbltrain values (49, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('13:56', 'hh24:mi'), 49);
-insert into tbltrain values (50, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('15:47', 'hh24:mi'), 50);
-insert into tbltrain values (51, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('16:33', 'hh24:mi'), 51);
-insert into tbltrain values (52, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('18:46', 'hh24:mi'), 52);
-insert into tbltrain values (53, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('20:26', 'hh24:mi'), 53);
-insert into tbltrain values (54, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('00:59', 'hh24:mi'), 54);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('10:58', 'hh24:mi'), 48);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('13:56', 'hh24:mi'), 49);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('15:47', 'hh24:mi'), 50);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('16:33', 'hh24:mi'), 51);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('18:46', 'hh24:mi'), 52);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('20:26', 'hh24:mi'), 53);
+insert into tbltrain values (train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '49800', '부산', '서울', 1, 1, to_date('00:59', 'hh24:mi'), 54);
 
 
+select * from tbltrain;
 
+select train_seq as 기차번호 , traintype as 기차종류, trainstart as 출발지,to_char(TrainstartTime,'hh24:mi') as 출발시간,
+trainarrive as 도착지, to_char(TrainendTime,'hh24:mi') as 도착시간, traincode
+from tbltrain 
+where traintype='ITX-새마을' and trainstart='서울'
+order by trainstarttime;  
 
+commit;
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------0706 DML-------------------------서울에서 출발 && 무궁화호 DML---------------------
 
@@ -169,7 +180,7 @@ insert into tbltrain values(80, '무궁화', to_date('06:38', 'hh24:mi'), '13800
 insert into tbltrain values(81, '무궁화', to_date('06:38', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('11:20', 'hh24:mi'), 2);
 
 
-select train_seq as 기차번호 , traintype as 기차종류, trainstart as 출발지,to_char(TrainstartTime,'hh24:mi') as 출발시간, trainarrive as 도착지, to_char(TrainendTime,'hh24:mi') as 도착시간 from tbltrain where trainstart = '서울' and traintype='무궁화' order by trainstarttime;  
+
 
 
 
@@ -191,57 +202,67 @@ insert into tbltrain values(95, '무궁화', to_date('07:10', 'hh24:mi'), '13800
 
 
 
-insert into tbltrain values(95, '무궁화', to_date('08:10', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('08:20', 'hh24:mi'), 4);
-insert into tbltrain values(96, '무궁화', to_date('08:10', 'hh24:mi'), '5800', '서울', '안양', 1, 1, to_date('08:31', 'hh24:mi'), 4);
-insert into tbltrain values(97, '무궁화', to_date('08:10', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('08:45', 'hh24:mi'), 4);
-insert into tbltrain values(98, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('09:05', 'hh24:mi'), 4);
-insert into tbltrain values(99, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('09:19', 'hh24:mi'), 4);
-insert into tbltrain values(100, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('09:42', 'hh24:mi'), 4);
-insert into tbltrain values(101, '무궁화', to_date('08:10', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('09:59', 'hh24:mi'), 4);
-insert into tbltrain values(102, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('10:13', 'hh24:mi'), 4);
-insert into tbltrain values(103, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('10:25', 'hh24:mi'), 4);
-insert into tbltrain values(104, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('10:45', 'hh24:mi'), 4);
-insert into tbltrain values(105, '무궁화', to_date('08:10', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('11:16', 'hh24:mi'), 4);
-insert into tbltrain values(106, '무궁화', to_date('08:10', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('11:33', 'hh24:mi'), 4);
-insert into tbltrain values(107, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('12:06', 'hh24:mi'), 4);
-insert into tbltrain values(108, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('12:12', 'hh24:mi'), 4);
-insert into tbltrain values(109, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('12:58', 'hh24:mi'), 4);
+insert into tbltrain values(96, '무궁화', to_date('08:10', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('08:20', 'hh24:mi'), 4);
+insert into tbltrain values(97, '무궁화', to_date('08:10', 'hh24:mi'), '5800', '서울', '안양', 1, 1, to_date('08:31', 'hh24:mi'), 4);
+insert into tbltrain values(98, '무궁화', to_date('08:10', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('08:45', 'hh24:mi'), 4);
+insert into tbltrain values(99, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('09:05', 'hh24:mi'), 4);
+insert into tbltrain values(100, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('09:19', 'hh24:mi'), 4);
+insert into tbltrain values(101, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('09:42', 'hh24:mi'), 4);
+insert into tbltrain values(102, '무궁화', to_date('08:10', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('09:59', 'hh24:mi'), 4);
+insert into tbltrain values(103, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('10:13', 'hh24:mi'), 4);
+insert into tbltrain values(104, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('10:25', 'hh24:mi'), 4);
+insert into tbltrain values(105, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('10:45', 'hh24:mi'), 4);
+insert into tbltrain values(106, '무궁화', to_date('08:10', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('11:16', 'hh24:mi'), 4);
+insert into tbltrain values(107, '무궁화', to_date('08:10', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('11:33', 'hh24:mi'), 4);
+insert into tbltrain values(108, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('12:06', 'hh24:mi'), 4);
+insert into tbltrain values(109, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('12:12', 'hh24:mi'), 4);
+insert into tbltrain values(110, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('12:58', 'hh24:mi'), 4);
 
 
 
-insert into tbltrain values(110, '무궁화', to_date('09:56', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('10:08', 'hh24:mi'), 5);
-insert into tbltrain values(111, '무궁화', to_date('09:56', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('10:32', 'hh24:mi'), 5);
-insert into tbltrain values(112, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('10:52', 'hh24:mi'), 5);
-insert into tbltrain values(113, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('11:07', 'hh24:mi'), 5);
-insert into tbltrain values(114, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('11:36', 'hh24:mi'),5);
-insert into tbltrain values(115, '무궁화', to_date('09:56', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('11:53', 'hh24:mi'), 5);
-insert into tbltrain values(116, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('12:07', 'hh24:mi'), 5);
-insert into tbltrain values(117, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('12:19', 'hh24:mi'), 5);
-insert into tbltrain values(118, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('12:42', 'hh24:mi'), 5);
-insert into tbltrain values(119, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('12:58', 'hh24:mi'), 5);
-insert into tbltrain values(120, '무궁화', to_date('09:56', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('13:13', 'hh24:mi'), 5);
-insert into tbltrain values(121, '무궁화', to_date('09:56', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('13:30', 'hh24:mi'), 5);
-insert into tbltrain values(122, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('14:04', 'hh24:mi'), 5);
-insert into tbltrain values(123, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('14:10', 'hh24:mi'), 5);
-insert into tbltrain values(124, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('14:56', 'hh24:mi'), 5);
+insert into tbltrain values(111, '무궁화', to_date('09:56', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('10:08', 'hh24:mi'), 5);
+insert into tbltrain values(112, '무궁화', to_date('09:56', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('10:32', 'hh24:mi'), 5);
+insert into tbltrain values(113, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('10:52', 'hh24:mi'), 5);
+insert into tbltrain values(114, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('11:07', 'hh24:mi'), 5);
+insert into tbltrain values(115, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('11:36', 'hh24:mi'),5);
+insert into tbltrain values(116, '무궁화', to_date('09:56', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('11:53', 'hh24:mi'), 5);
+insert into tbltrain values(117, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('12:07', 'hh24:mi'), 5);
+insert into tbltrain values(118, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('12:19', 'hh24:mi'), 5);
+insert into tbltrain values(119, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('12:42', 'hh24:mi'), 5);
+insert into tbltrain values(120, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('12:58', 'hh24:mi'), 5);
+insert into tbltrain values(121, '무궁화', to_date('09:56', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('13:13', 'hh24:mi'), 5);
+insert into tbltrain values(122, '무궁화', to_date('09:56', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('13:30', 'hh24:mi'), 5);
+insert into tbltrain values(123, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('14:04', 'hh24:mi'), 5);
+insert into tbltrain values(124, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('14:10', 'hh24:mi'), 5);
+insert into tbltrain values(125, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('14:56', 'hh24:mi'), 5);
 
 
+delete from tbltrain where train_seq=300;
+select * from tbltrain order by train_seq;
+commit;
+alter sequence train_seq increment by -245;
+rollback;
+drop sequence train_seq;
+select train_seq.nextVal from dual;
 
+create sequence train_seq;
 
-insert into tbltrain values(125, '무궁화', to_date('11:15', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('11:25', 'hh24:mi'), 6);
-insert into tbltrain values(126, '무궁화', to_date('11:15', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('11:49', 'hh24:mi'), 6);
-insert into tbltrain values(127, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('12:10', 'hh24:mi'), 6);
-insert into tbltrain values(128, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('12:25', 'hh24:mi'), 6);
-insert into tbltrain values(129, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('12:54', 'hh24:mi'), 6);
-insert into tbltrain values(130, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('13:21', 'hh24:mi'), 6);
-insert into tbltrain values(131, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('13:34', 'hh24:mi'), 6);
-insert into tbltrain values(132, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('13:55', 'hh24:mi'), 6);
-insert into tbltrain values(133, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('14:20', 'hh24:mi'), 6);
-insert into tbltrain values(134, '무궁화', to_date('11:15', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('14:35', 'hh24:mi'), 6);
-insert into tbltrain values(135, '무궁화', to_date('11:15', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('14:52', 'hh24:mi'), 6);
-insert into tbltrain values(136, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('15:27', 'hh24:mi'), 6);
-insert into tbltrain values(137, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('15:33', 'hh24:mi'), 6);
-insert into tbltrain values(138, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('16:18', 'hh24:mi'), 6);
+alter sequence "train_seq" restart with ;
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('11:25', 'hh24:mi'), 6);
+
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('11:49', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('12:10', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('12:25', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('12:54', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('13:21', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('13:34', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('13:55', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('14:20', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('14:35', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('14:52', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('15:27', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('15:33', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('16:18', 'hh24:mi'), 6);
 
 
 
@@ -513,8 +534,365 @@ insert into tbltrain values(306, '무궁화', to_date('21:37', 'hh24:mi'), '6800
 
 
 
+drop sequence train_seq;
+
+create sequence train_seq;
+rollback;
+
+select train_seq from dual;
+select * from tbltrain order by train_seq;
+commit;
+
+select train_seq.nextVal from dual;
+alter sequence train_seq increment by 1;
+
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('06:08', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('06:31', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('06:51', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('07:05', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('07:28', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('07:53', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('08:05', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('08:17', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('08:37', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('09:05', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('09:22', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('09:56', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('10:02', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('05:56', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('10:44', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('06:48', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '5800', '서울', '안양', 1, 1, to_date('06:59', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('07:13', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('07:33', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('07:47', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('08:10', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('08:38', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('09:07', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('09:35', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('09:52', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('10:25', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('10:31', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('06:38', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('11:20', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('07:22', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('07:44', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '6800', '서울', '오산', 1, 1, to_date('07:55', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('08:07', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('08:21', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('08:44', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('09:16', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('09:28', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('09:48', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('10:16', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('10:33', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('11:06', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('11:12', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('07:10', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('11:53', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('08:20', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '5800', '서울', '안양', 1, 1, to_date('08:31', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('08:45', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('09:05', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('09:19', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('09:42', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('09:59', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('10:13', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('10:25', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('10:45', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('11:16', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('11:33', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('12:06', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('12:12', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:10', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('12:58', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('10:08', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('10:32', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('10:52', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('11:07', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('11:36', 'hh24:mi'),5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('11:53', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('12:07', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('12:19', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('12:42', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('12:58', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('13:13', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('13:30', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('14:04', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('14:10', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('14:56', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('11:25', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('11:49', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('12:10', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('12:25', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('12:54', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('13:21', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('13:34', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('13:55', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('14:20', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('14:35', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('14:52', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('15:27', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('15:33', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:15', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('16:18', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('13:28', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('13:51', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('14:11', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('14:25', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('14:47', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('15:14', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('15:26', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('15:49', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('16:08', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('16:23', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('16:40', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('17:16', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('17:22', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:16', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('18:11', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('14:38', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('15:01', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('15:21', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('15:36', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('15:59', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('16:16', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('16:29', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('16:41', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('17:01', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('17:29', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('17:46', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('18:20', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('18:26', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:26', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('19:06', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('15:18', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('15:41', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('16:02', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('16:16', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('16:42', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('17:00', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('17:13', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('17:42', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('18:10', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('18:27', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('19:01', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('19:07', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:06', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('19:55', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '5800', '서울', '영등포', 1, 1, to_date('17:52', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '6800', '서울', '수원', 1, 1, to_date('18:15', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '7800', '서울', '평택', 1, 1, to_date('18:35', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '7800', '서울', '천안', 1, 1, to_date('18:49', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '7800', '서울', '조치원', 1, 1, to_date('19:11', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '8800', '서울', '신탄진', 1, 1, to_date('19:30', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '9800', '서울', '대전', 1, 1, to_date('19:43', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '9800', '서울', '옥천', 1, 1, to_date('19:55', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '9800', '서울', '영동', 1, 1, to_date('20:15', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '9800', '서울', '추풍령', 1, 1, to_date('20:31', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '10800', '서울', '김천', 1, 1, to_date('20:46', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '11800', '서울', '구미', 1, 1, to_date('21:03', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '13800', '서울', '대구', 1, 1, to_date('21:37', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '13800', '서울', '동대구', 1, 1, to_date('21:43', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:40', 'hh24:mi'), '13800', '서울', '밀양', 1, 1, to_date('22:23', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('08:17', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('08:37', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('09:05', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('09:22', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('09:56', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('10:02', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('10:44', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:05', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('11:29', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('09:07', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('09:35', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('09:52', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('10:25', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('10:31', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('11:20', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('08:38', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('12:02', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('09:28', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('09:48', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('10:16', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('10:33', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('11:06', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('11:12', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('11:53', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:16', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('12:36', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('10:25', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('10:45', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('11:16', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '6800', '대전', '구미', 1, 1, to_date('11:33', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('12:06', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('12:12', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('12:58', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:13', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('13:44', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('12:19', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('12:42', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '6800', '대전', '추풍령', 1, 1, to_date('12:58', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('13:13', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('13:30', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('14:04', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('14:10', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('14:56', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:07', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('15:35', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('13:34', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('13:55', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '6800', '대전', '추풍령', 1, 1, to_date('14:20', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('14:35', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('14:52', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('15:27', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('15:33', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('16:18', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('13:21', 'hh24:mi'), '8800', '대전', '부산', 1, 1, to_date('17:08', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('15:26', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('15:49', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '6800', '대전', '추풍령', 1, 1, to_date('16:08', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('16:23', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('16:40', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('17:16', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('17:22', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('18:11', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:14', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('19:00', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('16:41', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('17:01', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('17:29', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('17:46', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('18:20', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('18:26', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('19:06', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('16:29', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('19:51', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('17:42', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('18:10', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('18:27', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('19:01', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('19:07', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('19:55', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:13', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('20:40', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '5800', '대전', '옥천', 1, 1, to_date('19:55', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '5800', '대전', '영동', 1, 1, to_date('20:15', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '6800', '대전', '추풍령', 1, 1, to_date('20:31', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '6800', '대전', '김천', 1, 1, to_date('20:46', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '7800', '대전', '구미', 1, 1, to_date('21:03', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '8800', '대전', '대구', 1, 1, to_date('21:37', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '8800', '대전', '동대구', 1, 1, to_date('21:43', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '8800', '대전', '밀양', 1, 1, to_date('22:23', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:43', 'hh24:mi'), '9800', '대전', '부산', 1, 1, to_date('23:08', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('10:02', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('10:44', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('09:56', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('11:29', 'hh24:mi'), 1);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:25', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('10:31', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:25', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('11:20', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('10:25', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('12:02', 'hh24:mi'), 2);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:06', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('11:12', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:06', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('11:53', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('11:06', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('12:36', 'hh24:mi'), 3);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:06', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('12:12', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:06', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('12:58', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('12:06', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('13:44', 'hh24:mi'), 4);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:04', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('14:10', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:04', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('14:56', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('14:04', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('15:35', 'hh24:mi'), 5);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:27', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('15:33', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:27', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('16:18', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('15:27', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('17:08', 'hh24:mi'), 6);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:16', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('17:22', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:16', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('18:11', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('17:16', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('19:00', 'hh24:mi'), 7);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('18:20', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('18:26', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('18:20', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('19:06', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('18:20', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('19:51', 'hh24:mi'), 8);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:01', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('19:07', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:01', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('19:55', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('19:01', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('20:40', 'hh24:mi'), 9);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('21:37', 'hh24:mi'), '3800', '대구', '동대구', 1, 1, to_date('21:43', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('21:37', 'hh24:mi'), '4800', '대구', '밀양', 1, 1, to_date('22:23', 'hh24:mi'), 10);
+insert into tbltrain values(train_seq.nextVal, '무궁화', to_date('21:37', 'hh24:mi'), '6800', '대구', '부산', 1, 1, to_date('23:08', 'hh24:mi'), 10);
+
+rollback;
+
+commit;
+
+select * from tbltrain;
 
 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------ITX-새마을 서울에서 출발하는 방향--------------------------------
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('06:25', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('06:47', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('07:16', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('07:58', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '5800', '서울', '영동', 1, 1, to_date('08:26', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('08:52', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('09:08', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('09:37', 'hh24:mi'), 41);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('06:16', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('09:43', 'hh24:mi'), 41);
+
+
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('09:25', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('09:47', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('10:16', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '4800', '서울', '조치원', 1, 1, to_date('10:37', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('11:02', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '5800', '서울', '영동', 1, 1, to_date('11:30', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('11:56', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('12:12', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('12:41', 'hh24:mi'), 42);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('09:16', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('12:47', 'hh24:mi'), 42);
+
+
+
+
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('11:14', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('11:36', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '3800', '서울', '평택', 1, 1, to_date('11:55', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('12:08', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('12:50', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('13:42', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('13:58', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('14:27', 'hh24:mi'), 43);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:05', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('14:33', 'hh24:mi'), 43);
+
+
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('11:54', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('12:16', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '3800', '서울', '평택', 1, 1, to_date('12:35', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('12:48', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '4800', '서울', '조치원', 1, 1, to_date('13:09', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('13:33', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '5800', '서울', '영동', 1, 1, to_date('14:01', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('14:27', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('14:43', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('15:15', 'hh24:mi'), 44);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('11:45', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('15:21', 'hh24:mi'), 44);
+
+
+
+
+
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('14:12', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('14:34', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '3800', '서울', '평택', 1, 1, to_date('14:53', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('15:07', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('15:49', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '5800', '서울', '영동', 1, 1, to_date('16:17', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('16:43', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('16:59', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('17:28', 'hh24:mi'), 45);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('14:03', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('17:34', 'hh24:mi'), 45);
+
+
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('16:04', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('16:26', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('16:55', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('17:37', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('18:29', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('18:45', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('19:14', 'hh24:mi'), 46);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('15:55', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('19:20', 'hh24:mi'), 46);
+
+
+
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '3800', '서울', '영등포', 1, 1, to_date('20:34', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '3800', '서울', '수원', 1, 1, to_date('20:56', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '4800', '서울', '천안', 1, 1, to_date('21:25', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '5800', '서울', '대전', 1, 1, to_date('22:07', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '5800', '서울', '김천', 1, 1, to_date('22:59', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '6800', '서울', '구미', 1, 1, to_date('23:15', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '6800', '서울', '대구', 1, 1, to_date('23:44', 'hh24:mi'), 47);
+insert into tbltrain values(train_seq.nextVal, 'ITX-새마을', to_date('20:25', 'hh24:mi'), '6800', '서울', '동대구', 1, 1, to_date('23:50', 'hh24:mi'), 47);
 
 
 
