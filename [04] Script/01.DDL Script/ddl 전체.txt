@@ -1,0 +1,230 @@
+/* 기차역 */
+CREATE TABLE tbltrainstation (
+	trainstation_seq NUMBER NOT NULL, /* 기차역번호 */
+	trainstationname VARCHAR2(100) NOT NULL, /* 이름 */
+	trainstationloca VARCHAR2(1000) NOT NULL, /* 위치 */
+	local_seq NUMBER /* 지역번호 */
+);
+
+/* 버스 */
+CREATE TABLE tblbus (
+	bus_seq NUMBER NOT NULL, /* 버스번호 */
+	Sbusstation_seq NUMBER NOT NULL, /* 출발터미널번호 */
+	Abusstation_seq2 NUMBER, /* 도착터미널번호 */
+	bustime DATE NOT NULL, /* 소요시간 */
+	busprice NUMBER NOT NULL, /* 가격 */
+	trans_seq NUMBER NOT NULL /* 교통수단 번호 */
+);
+
+/* 교통수단 */
+CREATE TABLE tbltrans (
+	trans_seq NUMBER NOT NULL, /* 교통수단 번호 */
+	transcategory VARCHAR2(300) NOT NULL /* 교통수단 카테고리 */
+);
+
+/* 즐길거리 */
+CREATE TABLE tblenjoy (
+	enjoy_seq NUMBER NOT NULL, /* 즐길거리 번호 */
+	enjoyname VARCHAR2(300) NOT NULL, /* 이름 */
+	enjoypic VARCHAR2(60) NOT NULL, /* 사진 */
+	enjoycontent VARCHAR2(1000), /* 설명 */
+	local_seq NUMBER /* 지역번호 */
+);
+
+/* 방* */
+CREATE TABLE tblroom (
+	room_seq NUMBER NOT NULL, /* 방번호 */
+	hotel_seq NUMBER NOT NULL, /* 숙박시설번호 */
+	roomprice NUMBER NOT NULL, /* 가격 */
+	roompersoncount NUMBER NOT NULL, /* n인실 */
+	COL VARCHAR2(30) /* 방이름 */
+);
+
+/* 여행 예약 및 결제 내역* */
+CREATE TABLE tbltripreservpay (
+	tripreservpay_seq NUMBER NOT NULL, /* 여행 예약 및 결제 내역 번호 */
+	member_seq NUMBER NOT NULL, /* 회원번호 */
+	ispaid VARCHAR2(100) NOT NULL, /* 결제/비결제 */
+	paymentdate DATE NOT NULL, /* 결제날짜 */
+	transreserv_seq NUMBER NOT NULL, /* 교통수단 예약 번호 */
+	reservefood_seq NUMBER NOT NULL, /* 명소 예약 번호-음식점 */
+	reserveenjoy_seq NUMBER NOT NULL, /* 명소 예약번호 - 즐길거리 */
+	roomreser_seq NUMBER /* 방예약 번호 */
+);
+
+/* 기차 */
+CREATE TABLE tbltrain (
+	train_seq NUMBER NOT NULL, /* 기차번호 */
+	traintype VARCHAR2(100) NOT NULL, /* 기차종류 */
+	Strainstation_seq NUMBER NOT NULL, /* 출발기차역번호 */
+	Atrainstation_seq NUMBER, /* 도착기차역번호 */
+	trainstart_time DATE NOT NULL, /* 출발시간 */
+	trainarrive_time DATE, /* 도착시간 */
+	trainprice NUMBER NOT NULL, /* 가격 */
+	trans_seq NUMBER NOT NULL /* 교통수단 번호 */
+);
+
+/* 명소 별 테마 */
+CREATE TABLE tbltouristspottheme (
+	touristspottheme_seq NUMBER NOT NULL, /* 명소 별 테마 */
+	theme_seq NUMBER /* 테마번호 */
+);
+
+/* 지역* */
+CREATE TABLE tbllocal (
+	local_seq NUMBER NOT NULL, /* 지역번호 */
+	localname VARCHAR2(300) NOT NULL /* 지역명 */
+);
+
+/* 여행후기* */
+CREATE TABLE tbltouristreview (
+	touristreview_seq NUMBER NOT NULL, /* 여행후기 번호 */
+	tourreviewtitle VARCHAR2(300) NOT NULL, /* 제목 */
+	tourreviewcontent VARCHAR2(3000) NOT NULL, /* 내용 */
+	tourreviewpoint NUMBER NOT NULL, /* 별점 */
+	tripreservpay_seq NUMBER NOT NULL, /* 여행 예약 및 결제 내역 번호 */
+	member_seq NUMBER NOT NULL /* 회원번호 */
+);
+
+/* 터미널 */
+CREATE TABLE tblbusstation (
+	busstation_seq NUMBER NOT NULL, /* 터미널 번호 */
+	busstationloca VARCHAR2(1000) NOT NULL, /* 위치 */
+	busstationname VARCHAR2(300) NOT NULL, /* 이름 */
+	local_seq NUMBER /* 지역번호 */
+);
+
+/* 숙박시설 후기* */
+CREATE TABLE tblhotelreview (
+	hotelReview_seq NUMBER NOT NULL, /* 숙박시설 후기 번호 */
+	hotelreviewcontent VARCHAR2(3000) NOT NULL, /* 내용 */
+	hotelreviewgrade NUMBER NOT NULL, /* 별점 */
+	member_seq NUMBER NOT NULL, /* 회원번호 */
+	roomreser_seq NUMBER /* 방예약 번호 */
+);
+
+/* 음식점 */
+CREATE TABLE tblfood (
+	food_seq NUMBER NOT NULL, /* 음식점 번호 */
+	foodname VARCHAR2(100) NOT NULL, /* 이름 */
+	foodpic VARCHAR2(60) NOT NULL, /* 사진 */
+	foodcontent VARCHAR2(1000) NOT NULL, /* 설명 */
+	local_seq NUMBER /* 지역번호 */
+);
+
+/* 날짜별 방 예약 */
+CREATE TABLE tblhotelschedule (
+	hotelschedule_seq NUMBER NOT NULL, /* 날짜별 방 예약 번호 */
+	room_seq NUMBER NOT NULL, /* 방번호 */
+	issuedate DATE NOT NULL, /* 날짜 */
+	hotelschedulestate VARCHAR2(20) NOT NULL /* 예약(가능/불가) */
+);
+
+/* 숙박시설 카테고리 */
+CREATE TABLE tblhotelcategory (
+	hotelcategory_seq NUMBER NOT NULL, /* 숙박시설 카테고리번호 */
+	hotelcategory VARCHAR2(100) NOT NULL /* 카테고리 */
+);
+
+/* 교통수단 예약 */
+CREATE TABLE tbltransreserv (
+	transreserv_seq NUMBER NOT NULL, /* 교통수단 예약 번호 */
+	transreservdate DATE NOT NULL, /* 날짜 */
+	transreservcount NUMBER NOT NULL, /* 인원 */
+	train_seq NUMBER, /* 기차번호 */
+	bus_seq NUMBER /* 버스번호 */
+);
+
+/* 숙박시설* */
+CREATE TABLE tblhotel (
+	hotel_seq NUMBER NOT NULL, /* 숙박시설 번호 */
+	hotelname VARCHAR2(1000) NOT NULL, /* 숙박시설이름 */
+	hotelpicture VARCHAR2(60) NOT NULL, /* 사진 */
+	hoteldescription VARCHAR2(3000) NOT NULL, /* 설명 */
+	hotelcategory_seq NUMBER NOT NULL, /* 숙박시설 카테고리번호 */
+	hotelcompany_seq NUMBER, /* 숙박업체번호 */
+	local_seq NUMBER /* 지역번호 */
+);
+
+/* 테마* */
+CREATE TABLE tbltheme (
+	theme_seq NUMBER NOT NULL, /* 테마 번호 */
+	themename VARCHAR2(60), /* 테마이름 */
+	themeicon VARCHAR2(60) /* 아이콘 */
+);
+
+/* 회원* */
+CREATE TABLE tblmember (
+	member_seq NUMBER NOT NULL, /* 회원번호 */
+	memberpw VARCHAR2(100) NOT NULL, /* 비밀번호 */
+	memberid VARCHAR2(100), /* 회원아이디 */
+	membername VARCHAR2(100) NOT NULL, /* 회원이름 */
+	membergender VARCHAR2(5) NOT NULL, /* 성별 */
+	memberbirth DATE NOT NULL, /* 생년월일 */
+	membertel VARCHAR2(100) NOT NULL, /* 전화번호 */
+	memberregdate DATE NOT NULL /* 가입날 */
+);
+
+/* 베스트 */
+CREATE TABLE tblbesttourspot (
+	besttourspot_seq NUMBER NOT NULL, /* 베스트 번호 */
+	local_seq NUMBER, /* 지역번호 */
+	enjoy_seq NUMBER, /* 즐길거리 번호 */
+	food_seq NUMBER, /* 음식점 번호 */
+	hotel_seq NUMBER /* 숙박시설 번호 */
+);
+
+/* 명소 예약-음식점 */
+CREATE TABLE tblreservefood (
+	reservefood_seq NUMBER NOT NULL, /* 명소 예약 번호-음식점 */
+	food_seq NUMBER NOT NULL /* 음식점 번호 */
+);
+
+/* 숙박업체 */
+CREATE TABLE tblhotelcompany (
+	hotelcompany_seq NUMBER NOT NULL, /* 숙박업체번호 */
+	hotelname VARCHAR2(100) NOT NULL, /* 숙박업체명 */
+	hoteltel VARCHAR2(100) NOT NULL, /* 전화번호 */
+	COL NUMBER, /* 계좌번호 */
+	COL2 VARCHAR2(30), /* 은행 */
+	COL3 VARCHAR2(30) /* 사업자등록번호 */
+);
+
+/* 명소 예약-즐길거리 */
+CREATE TABLE tblreserveenjoy (
+	reserveenjoy_seq NUMBER NOT NULL, /* 명소 예약번호 - 즐길거리 */
+	enjoy_seq NUMBER NOT NULL /* 즐길거리 번호 */
+);
+
+/* 정산 */
+CREATE TABLE tblaccount (
+	account_seq NUMBER NOT NULL, /* 정산번호 */
+	hotelcompany_seq NUMBER NOT NULL, /* 숙박업체번호 */
+	tripreservpay_seq NUMBER NOT NULL /* 여행 예약 및 결제 내역 번호 */
+);
+
+/* 방 예약 */
+CREATE TABLE tblroomreser (
+	roomreser_seq NUMBER NOT NULL, /* 방예약 번호 */
+	peoplenum NUMBER, /* 인원 */
+	reserdate DATE, /* 날짜 */
+	checkin DATE, /* 체크인 */
+	checkout DATE, /* 체크아웃 */
+	hotelschedule_seq NUMBER /* 날짜별 방 예약 번호 */
+);
+
+/* 즐길거리 후기 */
+CREATE TABLE tblenjoyreview (
+	enjoyreview_seq NUMBER NOT NULL, /* 즐길거리 후기 번호 */
+	enjoyreview VARCHAR2(1000), /* 즐길거리 후기 */
+	enjoy_seq NUMBER, /* 즐길거리 번호 */
+	member_seq NUMBER /* 회원번호 */
+);
+
+/* 음식점 후기 */
+CREATE TABLE tblfoodreview (
+	foodreview_seq NUMBER NOT NULL, /* 음식점 후기 번호 */
+	foodreview VARCHAR2(1000), /* 음식점 후기 */
+	food_seq NUMBER, /* 음식점 번호 */
+	member_seq NUMBER /* 회원번호 */
+);
