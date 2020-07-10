@@ -10,6 +10,7 @@ insert into tbltrain values (, '무궁화', to_date('07:22', 'hh24:mi'), '15800'
 insert into tbltrain values (, '무궁화', to_date('07:22', 'hh24:mi'), '15800', '대구', '김천', 1, 1, to_date('08:11', 'hh24:mi'), 11);
 insert into tbltrain values (, '무궁화', to_date('07:22', 'hh24:mi'), '15800', '대구', '구미', 1, 1, to_date('07:55', 'hh24:mi'), 11);
 
+to_date('08-01', 'MM-DD'),
 
 
 
