@@ -133,7 +133,8 @@ public class UserMain {
 		switch (num) {
 
 		case "1":
-			
+			BusTrain bt = new BusTrain();
+			bt.printBusTrain();
 			break;
 			
 		
