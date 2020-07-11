@@ -35,7 +35,9 @@ public class BusTrain {
 				System.out.print("입력 : ");
 				String sel = scan.nextLine();
 				
-				if (sel.equals("1")) {
+				if (sel.equals("1")) {					
+					System.out.print("날짜(MM-DD형식) : ");
+					String date= scan.nextLine();
 				try {
 					conn = util.open();
 					stat = conn.createStatement();
@@ -150,8 +152,18 @@ public class BusTrain {
 									System.out.println(result);				
 							}
 								System.out.println("========================================================================================================================");
-								System.out.print("예매하기 : ");
+								System.out.println("1. 뒤로가기");
+								System.out.println("2. 예매하기");
+								System.out.println("========================================================================================================================");
+								
+								System.out.print("기차번호 : ");
 								String trainreserv = scan.nextLine();
+								System.out.print("인원 : ");
+								String count = scan.nextLine();
+								
+								String sql9 = String.format("insert into tbltransreserv values (transreserv_seq.nextval,to_date('%s', 'MM-DD'),%s,%s,null,1)", date, count,trainreserv, 1 );
+								
+								stat.executeUpdate(sql9);
 								rs.close();							
 								conn.close();
 								stat.close();
@@ -164,8 +176,9 @@ public class BusTrain {
 //							loop = false;
 							
 							System.out.println();
+							System.out.println("예매 완료!");
 							System.out.print("계속하시려면 엔터를 눌러주세요");						
-							String num3 = scan.nextLine();
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 							// TODO: handle exception
@@ -181,14 +194,17 @@ public class BusTrain {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 				} else if (sel.equals("2")) {
+					System.out.print("날짜(MM-DD형식) : ");
+					String date2= scan.nextLine();
 					try {
 						conn = util.open();
 						stat = conn.createStatement();
 						
-						String sql = "select busstation_seq as 터미널번호, busstationloca as 지역, busstationname as 터미널명 from tblbusstation;";
+						String sql4 = "select busstation_seq as 터미널번호, busstationloca as 지역, busstationname as 터미널명 from tblbusstation";
 						
-						rs = stat.executeQuery(sql);
+						rs = stat.executeQuery(sql4);
 						System.out.println("================================================================================================================================");
 						while (rs.next()) { //역번호, 지역, 터미널이름
 							
@@ -212,9 +228,9 @@ public class BusTrain {
 							conn = util.open();
 							stat = conn.createStatement();
 							
-							String sql2 = "select busstation_seq as 터미널번호, busstationloca as 지역, busstationname as 터미널명 from tblbusstation;";
+							String sql5 = "select busstation_seq as 터미널번호, busstationloca as 지역, busstationname as 터미널명 from tblbusstation";
 							
-							rs = stat.executeQuery(sql2);
+							rs = stat.executeQuery(sql5);
 							System.out.println("================================================================================================================================");
 							while (rs.next()) { //역번호, 지역, 터미널이름
 								
@@ -238,7 +254,7 @@ public class BusTrain {
 								stat = conn.createStatement();
 								rs = null;
 								
-								String sql3 = String.format("select DISTINCT bus_seq " + 
+								String sql6 = String.format("select DISTINCT bus_seq " + 
 										"    as 버스번호 ,d.busstationloca as 출발지, to_char(busstarttime,'hh24:mi') as 출발시간,bustime as 소요시간,  e.*,  busprice as 가격 " + 
 										"        from (select DISTINCT b.busstationloca as 도착지     "+ 
 										"        from tblbus a" + 
@@ -249,11 +265,11 @@ public class BusTrain {
 										"        inner join tblbusstation d" + 
 										"            on c.sbusstation_seq = d.busstation_seq" + 
 										"             where c.sbusstation_seq = %s and c.abusstation_seq2 = %s" + 
-										"                order by c.bus_seq;", startbus,arrivebus,startbus,arrivebus );
+										"                order by c.bus_seq", startbus,arrivebus,startbus,arrivebus );
 
 
 														
-								rs = stat.executeQuery(sql3);
+								rs = stat.executeQuery(sql6);
 								System.out.println("================================================================================================================================");
 								System.out.println("[버스번호]\t[출발지]\t[출발시간]\t[소요시간]\t[도착지]\t[가격]");
 								while (rs.next()) { //역번호, 역이름  도착기준
@@ -265,11 +281,24 @@ public class BusTrain {
 									System.out.println(result);		
 								}
 								System.out.println("========================================================================================================================");
-								System.out.print("예매하기 : ");
+								System.out.println("1. 뒤로가기");
+								System.out.println("2. 예매하기");
+								System.out.println("========================================================================================================================");
+								
+								System.out.print("버스번호 : ");
 								String busreserv = scan.nextLine();
+								System.out.print("인원 : ");
+								String count2 = scan.nextLine();
+								
+								String sql10 = String.format("insert into tbltransreserv values (transreserv_seq.nextval,to_date('%s', 'MM-DD'),%s,%s,null,1)", date2 , count2, busreserv );
+								
+								stat.executeUpdate(sql10);
 								rs.close();							
 								conn.close();
 								stat.close();
+								System.out.println();
+								System.out.println("예매 완료!");
+								System.out.print("계속하시려면 엔터를 눌러주세요");			
 							} catch (Exception e) {
 								// TODO: handle exception
 							}
