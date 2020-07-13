@@ -142,10 +142,10 @@ public class BusTrain {
 														
 								rs = stat.executeQuery(sql3);
 								System.out.println("================================================================================================================================");
-								System.out.println("[기차종류]\t[출발기차역]\t[출발시간]\t[도착기차역]\t[도착시간]\t[가격]\t[기차번호]");
+								System.out.println("[기차번호]\t[기차종류]\t[출발기차역]\t[출발시간]\t[도착기차역]\t[도착시간]\t[가격]");
 								while (rs.next()) { //역번호, 역이름  도착기준
 									
-									String result = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",rs.getString("기차종류"),rs.getString("출발기차역"),rs.getString("출발시간"),rs.getString("도착기차역"),rs.getString("도착시간"),rs.getString("가격"),rs.getString("기차번호"));				
+									String result = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", rs.getString("기차번호"),rs.getString("기차종류"),rs.getString("출발기차역"),rs.getString("출발시간"),rs.getString("도착기차역"),rs.getString("도착시간"),rs.getString("가격"));				
 
 									
 									

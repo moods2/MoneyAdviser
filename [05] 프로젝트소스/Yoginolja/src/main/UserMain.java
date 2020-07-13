@@ -121,7 +121,7 @@ public class UserMain {
 		System.out.println("============================================================");
 		System.out.println("\t\t[메뉴]");
 		System.out.println("============================================================");
-		System.out.println("\t\t 1. 기차 ");
+		System.out.println("\t\t 1. 교통편 ");
 		
 		System.out.println();
 		System.out.println("\t\t0. 로그아웃");
