@@ -32,6 +32,33 @@ inner join tbltransreserv g
 where traintype = '무궁화' and c.Strainstation_seq = 1 and c.Atrainstation_seq = 15
 order by c.trans_seq;
 
+select DISTINCT reserv.transreservdate as 결제일, train.traintype as 기차종류, a.trainstationname as 출발역, to_char(train.trainstart_time,'hh24:mi') as 출발시간, e.*, to_char(train.trainarrive_time,'hh24:mi') as 도착시간,train.trainprice * reserv.transreservcount as 가격
+    from (select DISTINCT b.trainstationname as 도착역
+    from tbltransreserv reserv2
+        INNER join tbltrain train2
+            on reserv2.train_seq = train2.train_seq
+                inner join tbltrainstation b
+                    on train2.atrainstation_seq = b.trainstation_seq
+                where member_seq = 117) e,
+                tbltransreserv reserv
+        INNER join tbltrain train
+            on reserv.train_seq = train.train_seq
+                inner join tbltrainstation a
+                    on train.strainstation_seq = a.trainstation_seq
+                where member_seq = 117;
+                
+                
+
+               
+(select b.trainstationname as 도착역
+    from tbltransreserv reserv2
+        INNER join tbltrain train2
+            on reserv2.train_seq = train2.train_seq
+                inner join tbltrainstation b
+                    on train2.atrainstation_seq = b.trainstation_seq
+                where member_seq = 117);                
+
+select * from t
 
 select * from tbltransreserv;
                 
