@@ -119,7 +119,7 @@ train.trainprice * reserv.transreservcount as 가격
                     order by reserv.transreservdate;
                     
                     
-select DISTINCT reserv.transreservdate as 결제일, a.busstationloca as 출발지, to_char(bus.busstarttime,'hh24:mi') as 출발시간, bus.busprice * reserv.transreservcount as 가격
+select DISTINCT reserv.transreservdate as 결제일, a.busstationloca as 출발지, to_char(bus.busstarttime,'hh24:mi') as 출발시간, bus.bustime,bus.busprice * reserv.transreservcount as 가격
     from tbltransreserv reserv
         INNER join tblbus bus
             on reserv.bus_seq = bus.bus_seq
@@ -129,4 +129,65 @@ select DISTINCT reserv.transreservdate as 결제일, a.busstationloca as 출발�
                     order by reserv.transreservdate;     
                     
                     
+select DISTINCT b.busstationloca as 도착지
+    from tbltransreserv reserv
+        INNER join tblbus bus2
+            on reserv.bus_seq = bus2.bus_seq
+                inner join tblbusstation b
+                    on bus2.abusstation_seq2 = b.busstation_seq
+                where member_seq = 117
+                
+select DISTINCT reserv.transreservdate as 결제일, a.busstationloca as 출발지, to_char(bus.busstarttime,'hh24:mi') as 출발시간,  bus.bustime,bus.busprice * reserv.transreservcount as 가격
+    from tbltransreserv reserv
+        INNER join tblbus bus
+            on reserv.bus_seq = bus.bus_seq            
+                inner join tblbusstation a
+                    on bus.sbusstation_seq = a.busstation_seq                    
+                where member_seq = 117 
+                    order by reserv.transreservdate;           
                     
+select * from tbltransreserv;          
+select
+*
+from tbltrainstation ts
+inner join tbltrain t
+on ts.trainstation_seq = t.Strainstation_seq and t.Atrainstation_seq = ts.trainstation_seq
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+--버스 예약 조회
+select DISTINCT  reserv.transreservdate as 결제일,b.busstationloca as 출발지, to_char(bus.busstarttime,'hh24:mi') as 출발시간,a.busstationloca as 도착지,   bus.bustime,bus.busprice * reserv.transreservcount as 가격
+    from tbltransreserv reserv
+        INNER join tblbus bus
+            on reserv.bus_seq = bus.bus_seq            
+                inner join tblbusstation a
+                    on bus.abusstation_seq2 = a.busstation_seq
+                        inner join tblbusstation b
+                            on bus.sbusstation_seq = b.busstation_seq
+                                where member_seq = 117 
+                                    order by reserv.transreservdate;  
+
+--기차 예약 조회                                    
+select DISTINCT reserv.transreservdate as 결제일, train.traintype as 기차종류, a.trainstationname as 출발역, to_char(train.trainstart_time,'hh24:mi') as 출발시간,
+b.trainstationname as 도착역,to_char(train.trainarrive_time,'hh24:mi') as 도착시간,
+train.trainprice * reserv.transreservcount as 가격
+    from tbltransreserv reserv
+        INNER join tbltrain train
+            on reserv.train_seq = train.train_seq
+                inner join tbltrainstation a
+                    on train.strainstation_seq = a.trainstation_seq
+                        inner join tbltrainstation b
+                            on train.atrainstation_seq = b.trainstation_seq
+                                where member_seq = 117 
+                                    order by reserv.transreservdate;      
+                                    
+----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+select * from tbltrain;                     
+
+select * from tbltrainstation;
