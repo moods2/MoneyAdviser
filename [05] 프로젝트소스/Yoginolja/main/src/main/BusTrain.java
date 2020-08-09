@@ -23,34 +23,34 @@ public class BusTrain {
          
          while (loop) { // 
             System.out.println("============================================================");
-            System.out.println("      [±³Åë¼ö´Ü ¿¹¸Å]");
+            System.out.println("      [êµí†µìˆ˜ë‹¨ ì˜ˆë§¤]");
             System.out.println("============================================================");
-            System.out.println("1 :       [±âÂ÷ ¿¹¸Å]");
-            System.out.println("2 :       [¹ö½º ¿¹¸Å]");
-            System.out.println("3 :       [¿¹¸Å È®ÀÎ]");
+            System.out.println("1 :       [ê¸°ì°¨ ì˜ˆë§¤]");
+            System.out.println("2 :       [ë²„ìŠ¤ ì˜ˆë§¤]");
+            System.out.println("3 :       [ì˜ˆë§¤ í™•ì¸]");
             
             Connection conn = null;
             Statement stat = null;
             ResultSet rs = null;
             
             System.out.println("---------------------------------------------------------");
-            System.out.print("ÀÔ·Â : ");
+            System.out.print("ì…ë ¥ : ");
             String sel = scan.nextLine();
             
             if (sel.equals("1")) {               
-               System.out.print("³¯Â¥(MM-DDÇü½Ä) : ");
+               System.out.print("ë‚ ì§œ(MM-DDí˜•ì‹) : ");
                String date= scan.nextLine();
             try {
                conn = util.open();
                stat = conn.createStatement();
                
-               String sql = "select trainstation_seq as ¿ª¹øÈ£, trainstationname as ¿ªÀÌ¸§ from tbltrainstation order by trainstation_seq";
+               String sql = "select trainstation_seq as ì—­ë²ˆí˜¸, trainstationname as ì—­ì´ë¦„ from tbltrainstation order by trainstation_seq";
                
                rs = stat.executeQuery(sql);
                System.out.println("================================================================================================================================");
-               while (rs.next()) { //¿ª¹øÈ£, ¿ªÀÌ¸§  Ãâ¹ß±âÁØ
+               while (rs.next()) { //ì—­ë²ˆí˜¸, ì—­ì´ë¦„  ì¶œë°œê¸°ì¤€
                   
-                  String result = String.format("%s\t%s",rs.getString("¿ª¹øÈ£"),rs.getString("¿ªÀÌ¸§"));            
+                  String result = String.format("%s\t%s",rs.getString("ì—­ë²ˆí˜¸"),rs.getString("ì—­ì´ë¦„"));            
 
 
                   
@@ -59,7 +59,7 @@ public class BusTrain {
                }
                System.out.println("================================================================================================================================");
                
-               System.out.print("Ãâ¹ß ±âÂ÷¿ª : ");
+               System.out.print("ì¶œë°œ ê¸°ì°¨ì—­ : ");
                String starttrain = scan.nextLine();
                
                System.out.println();
@@ -73,14 +73,14 @@ public class BusTrain {
                      stat = conn.createStatement();
                      rs = null;
                      
-                     String sql2 = "select trainstation_seq as ¿ª¹øÈ£, trainstationname as ¿ªÀÌ¸§ from tbltrainstation order by trainstation_seq";
+                     String sql2 = "select trainstation_seq as ì—­ë²ˆí˜¸, trainstationname as ì—­ì´ë¦„ from tbltrainstation order by trainstation_seq";
                                        
                      rs = stat.executeQuery(sql2);
                      System.out.println("================================================================================================================================");
-//                     System.out.println("[°úÁ¤¹øÈ£]\t\t\t\t[°úÁ¤¸í]\t\t\t\t[°úÁ¤±â°£]\t\t[±³»ç¸í]\t[°­ÀÇ½Ç]");
-                     while (rs.next()) { //¿ª¹øÈ£, ¿ªÀÌ¸§  µµÂø±âÁØ
+//                     System.out.println("[ê³¼ì •ë²ˆí˜¸]\t\t\t\t[ê³¼ì •ëª…]\t\t\t\t[ê³¼ì •ê¸°ê°„]\t\t[êµì‚¬ëª…]\t[ê°•ì˜ì‹¤]");
+                     while (rs.next()) { //ì—­ë²ˆí˜¸, ì—­ì´ë¦„  ë„ì°©ê¸°ì¤€
                         
-                        String result = String.format("%s\t%s",rs.getString("¿ª¹øÈ£"),rs.getString("¿ªÀÌ¸§"));            
+                        String result = String.format("%s\t%s",rs.getString("ì—­ë²ˆí˜¸"),rs.getString("ì—­ì´ë¦„"));            
 
 
                         
@@ -88,13 +88,13 @@ public class BusTrain {
                         
                      }
                      System.out.println("========================================================================================================================");
-                     System.out.print("µµÂø ±âÂ÷¿ª¹øÈ£ : ");
+                     System.out.print("ë„ì°© ê¸°ì°¨ì—­ë²ˆí˜¸ : ");
                      String arrivetrain = scan.nextLine();
                      
-                     System.out.println("¹«±ÃÈ­");
+                     System.out.println("ë¬´ê¶í™”");
                      System.out.println("KTX");
-                     System.out.println("ITX-»õ¸¶À»");
-                     System.out.print("±âÂ÷ Á¾·ù : ");
+                     System.out.println("ITX-ìƒˆë§ˆì„");
+                     System.out.print("ê¸°ì°¨ ì¢…ë¥˜ : ");
                      String traintype = scan.nextLine();
                      
                      
@@ -110,11 +110,11 @@ public class BusTrain {
                         stat = conn.createStatement();
                         rs = null;
                         
-                        String sql3 = String.format("select distinct traintype as ±âÂ÷Á¾·ù, e.* ," + 
-                              "to_char(trainstart_time,'hh24:mi') as Ãâ¹ß½Ã°£, d.trainstationname as µµÂø±âÂ÷¿ª ," + 
-                              "    to_char(trainarrive_time,'hh24:mi') as µµÂø½Ã°£,trainprice as °¡°İ, c.train_seq as ±âÂ÷¹øÈ£" + 
+                        String sql3 = String.format("select distinct traintype as ê¸°ì°¨ì¢…ë¥˜, e.* ," + 
+                              "to_char(trainstart_time,'hh24:mi') as ì¶œë°œì‹œê°„, d.trainstationname as ë„ì°©ê¸°ì°¨ì—­ ," + 
+                              "    to_char(trainarrive_time,'hh24:mi') as ë„ì°©ì‹œê°„,trainprice as ê°€ê²©, c.train_seq as ê¸°ì°¨ë²ˆí˜¸" + 
                               "        from" + 
-                              "        (select  b.trainstationname as Ãâ¹ß±âÂ÷¿ª " + 
+                              "        (select  b.trainstationname as ì¶œë°œê¸°ì°¨ì—­ " + 
                               "        from tbltrain a" + 
                               "            inner join tbltrainstation b" + 
                               "                on a.Strainstation_seq = b.trainstation_seq" + 
@@ -129,27 +129,27 @@ public class BusTrain {
                                           
                         rs = stat.executeQuery(sql3);
                         System.out.println("================================================================================================================================");
-                        System.out.println("[±âÂ÷¹øÈ£]\t[±âÂ÷Á¾·ù]\t[Ãâ¹ß±âÂ÷¿ª]\t[Ãâ¹ß½Ã°£]\t[µµÂø±âÂ÷¿ª]\t[µµÂø½Ã°£]\t[°¡°İ]");
-                        while (rs.next()) { //¿ª¹øÈ£, ¿ªÀÌ¸§  µµÂø±âÁØ
+                        System.out.println("[ê¸°ì°¨ë²ˆí˜¸]\t[ê¸°ì°¨ì¢…ë¥˜]\t[ì¶œë°œê¸°ì°¨ì—­]\t[ì¶œë°œì‹œê°„]\t[ë„ì°©ê¸°ì°¨ì—­]\t[ë„ì°©ì‹œê°„]\t[ê°€ê²©]");
+                        while (rs.next()) { //ì—­ë²ˆí˜¸, ì—­ì´ë¦„  ë„ì°©ê¸°ì¤€
                            
-                           String result = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", rs.getString("±âÂ÷¹øÈ£"),rs.getString("±âÂ÷Á¾·ù"),rs.getString("Ãâ¹ß±âÂ÷¿ª"),rs.getString("Ãâ¹ß½Ã°£"),rs.getString("µµÂø±âÂ÷¿ª"),rs.getString("µµÂø½Ã°£"),rs.getString("°¡°İ"));            
+                           String result = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", rs.getString("ê¸°ì°¨ë²ˆí˜¸"),rs.getString("ê¸°ì°¨ì¢…ë¥˜"),rs.getString("ì¶œë°œê¸°ì°¨ì—­"),rs.getString("ì¶œë°œì‹œê°„"),rs.getString("ë„ì°©ê¸°ì°¨ì—­"),rs.getString("ë„ì°©ì‹œê°„"),rs.getString("ê°€ê²©"));            
 
                            
                            
                            System.out.println(result);            
                      }
                         System.out.println("========================================================================================================================");
-                        System.out.println("1. ¿¹¸ÅÇÏ±â");
-                        System.out.println("2. µÚ·Î°¡±â");
+                        System.out.println("1. ì˜ˆë§¤í•˜ê¸°");
+                        System.out.println("2. ë’¤ë¡œê°€ê¸°");
                         System.out.println("========================================================================================================================");
-                        System.out.print("¹øÈ£ ÀÔ·Â : ");
+                        System.out.print("ë²ˆí˜¸ ì…ë ¥ : ");
                         String num = scan.nextLine();
                         switch (num) {
 
                         case "1":
-                           System.out.print("±âÂ÷¹øÈ£ : ");
+                           System.out.print("ê¸°ì°¨ë²ˆí˜¸ : ");
                            String trainreserv = scan.nextLine();
-                           System.out.print("ÀÎ¿ø : ");
+                           System.out.print("ì¸ì› : ");
                            String count = scan.nextLine();
                            try {
                               conn = util.open();
@@ -165,9 +165,9 @@ public class BusTrain {
                                  System.out.println(Integer.parseInt(result) * Integer.parseInt(count));   
                               }
                               
-                              System.out.println("°áÁ¦¸¦ ÁøÇàÇÏ½Ã°Ú½À´Ï±î?");
-                              System.out.println("°áÁ¦¸¦ ÁøÇàÇÕ´Ï´Ù!!!");
-                              System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+                              System.out.println("ê²°ì œë¥¼ ì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+                              System.out.println("ê²°ì œë¥¼ ì§„í–‰í•©ë‹ˆë‹¤!!!");
+                              System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
                               String credit = scan.nextLine();
                               
                               try {
@@ -205,7 +205,7 @@ public class BusTrain {
                         
                            
                         case "0":
-                           //·Î±×¾Æ¿ô
+                           //ë¡œê·¸ì•„ì›ƒ
                            rs.close();   
                            conn.close();
                            stat.close();
@@ -222,8 +222,8 @@ public class BusTrain {
 //                     loop = false;
                      
                      System.out.println();
-                     System.out.println("¿¹¸Å ¿Ï·á!");
-                     System.out.print("°è¼ÓÇÏ½Ã·Á¸é ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");   
+                     System.out.println("ì˜ˆë§¤ ì™„ë£Œ!");
+                     System.out.print("ê³„ì†í•˜ì‹œë ¤ë©´ ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");   
                      System.out.println();
                      
                   } catch (Exception e) {
@@ -243,21 +243,21 @@ public class BusTrain {
             }
             
             
-            //¹ö½º ¿¹¸Å
+            //ë²„ìŠ¤ ì˜ˆë§¤
             } else if (sel.equals("2")) {
-               System.out.print("³¯Â¥(MM-DDÇü½Ä) : ");
+               System.out.print("ë‚ ì§œ(MM-DDí˜•ì‹) : ");
                String date2= scan.nextLine();
                try {
                   conn = util.open();
                   stat = conn.createStatement();
                   
-                  String sql4 = "select busstation_seq as ÅÍ¹Ì³Î¹øÈ£, busstationloca as Áö¿ª, busstationname as ÅÍ¹Ì³Î¸í from tblbusstation";
+                  String sql4 = "select busstation_seq as í„°ë¯¸ë„ë²ˆí˜¸, busstationloca as ì§€ì—­, busstationname as í„°ë¯¸ë„ëª… from tblbusstation";
                   
                   rs = stat.executeQuery(sql4);
                   System.out.println("================================================================================================================================");
-                  while (rs.next()) { //¿ª¹øÈ£, Áö¿ª, ÅÍ¹Ì³ÎÀÌ¸§
+                  while (rs.next()) { //ì—­ë²ˆí˜¸, ì§€ì—­, í„°ë¯¸ë„ì´ë¦„
                      
-                     String result = String.format("%s\t%s",rs.getString("ÅÍ¹Ì³Î¹øÈ£"),rs.getString("Áö¿ª"),rs.getString("ÅÍ¹Ì³Î¸í"));            
+                     String result = String.format("%s\t%s",rs.getString("í„°ë¯¸ë„ë²ˆí˜¸"),rs.getString("ì§€ì—­"),rs.getString("í„°ë¯¸ë„ëª…"));            
 
 
                      
@@ -265,7 +265,7 @@ public class BusTrain {
                   }
                   System.out.println("================================================================================================================================");
                   
-                  System.out.print("Ãâ¹ß ¹ö½ºÅÍ¹Ì³Î : ");
+                  System.out.print("ì¶œë°œ ë²„ìŠ¤í„°ë¯¸ë„ : ");
                   String startbus = scan.nextLine();
                   
                   System.out.println();
@@ -277,20 +277,20 @@ public class BusTrain {
                      conn = util.open();
                      stat = conn.createStatement();
                      
-                     String sql5 = "select busstation_seq as ÅÍ¹Ì³Î¹øÈ£, busstationloca as Áö¿ª, busstationname as ÅÍ¹Ì³Î¸í from tblbusstation";
+                     String sql5 = "select busstation_seq as í„°ë¯¸ë„ë²ˆí˜¸, busstationloca as ì§€ì—­, busstationname as í„°ë¯¸ë„ëª… from tblbusstation";
                      
                      rs = stat.executeQuery(sql5);
                      System.out.println("================================================================================================================================");
-                     while (rs.next()) { //¿ª¹øÈ£, Áö¿ª, ÅÍ¹Ì³ÎÀÌ¸§
+                     while (rs.next()) { //ì—­ë²ˆí˜¸, ì§€ì—­, í„°ë¯¸ë„ì´ë¦„
                         
-                        String result = String.format("%s\t%s",rs.getString("ÅÍ¹Ì³Î¹øÈ£"),rs.getString("Áö¿ª"),rs.getString("ÅÍ¹Ì³Î¸í"));            
+                        String result = String.format("%s\t%s",rs.getString("í„°ë¯¸ë„ë²ˆí˜¸"),rs.getString("ì§€ì—­"),rs.getString("í„°ë¯¸ë„ëª…"));            
 
 
                         
                         System.out.println(result);
                      }
                      System.out.println("========================================================================================================================");
-                     System.out.print("µµÂø ¹ö½ºÅÍ¹Ì³Î¹øÈ£ : ");
+                     System.out.print("ë„ì°© ë²„ìŠ¤í„°ë¯¸ë„ë²ˆí˜¸ : ");
                      String arrivebus = scan.nextLine();                     
                      System.out.println();
                      System.out.println();
@@ -304,8 +304,8 @@ public class BusTrain {
                         rs = null;
                         
                         String sql6 = String.format("select DISTINCT bus_seq " + 
-                              "    as ¹ö½º¹øÈ£ ,d.busstationloca as Ãâ¹ßÁö, to_char(busstarttime,'hh24:mi') as Ãâ¹ß½Ã°£,bustime as ¼Ò¿ä½Ã°£,  e.*,  busprice as °¡°İ " + 
-                              "        from (select DISTINCT b.busstationloca as µµÂøÁö     "+ 
+                              "    as ë²„ìŠ¤ë²ˆí˜¸ ,d.busstationloca as ì¶œë°œì§€, to_char(busstarttime,'hh24:mi') as ì¶œë°œì‹œê°„,bustime as ì†Œìš”ì‹œê°„,  e.*,  busprice as ê°€ê²© " + 
+                              "        from (select DISTINCT b.busstationloca as ë„ì°©ì§€     "+ 
                               "        from tblbus a" + 
                               "        inner join tblbusstation b" + 
                               "            on a.abusstation_seq2 = b.busstation_seq" + 
@@ -320,29 +320,29 @@ public class BusTrain {
                                           
                         rs = stat.executeQuery(sql6);
                         System.out.println("================================================================================================================================");
-                        System.out.println("[¹ö½º¹øÈ£]\t[Ãâ¹ßÁö]\t[Ãâ¹ß½Ã°£]\t[¼Ò¿ä½Ã°£]\t[µµÂøÁö]\t[°¡°İ]");
-                        while (rs.next()) { //¿ª¹øÈ£, ¿ªÀÌ¸§  µµÂø±âÁØ
+                        System.out.println("[ë²„ìŠ¤ë²ˆí˜¸]\t[ì¶œë°œì§€]\t[ì¶œë°œì‹œê°„]\t[ì†Œìš”ì‹œê°„]\t[ë„ì°©ì§€]\t[ê°€ê²©]");
+                        while (rs.next()) { //ì—­ë²ˆí˜¸, ì—­ì´ë¦„  ë„ì°©ê¸°ì¤€
                            
-                           String result = String.format("%s\t%s\t%s\t%s\t%s\t%s",rs.getString("¹ö½º¹øÈ£"),rs.getString("Ãâ¹ßÁö"),rs.getString("Ãâ¹ß½Ã°£"),rs.getString("¼Ò¿ä½Ã°£"),rs.getString("µµÂøÁö"),rs.getString("°¡°İ"));            
+                           String result = String.format("%s\t%s\t%s\t%s\t%s\t%s",rs.getString("ë²„ìŠ¤ë²ˆí˜¸"),rs.getString("ì¶œë°œì§€"),rs.getString("ì¶œë°œì‹œê°„"),rs.getString("ì†Œìš”ì‹œê°„"),rs.getString("ë„ì°©ì§€"),rs.getString("ê°€ê²©"));            
 
                            
                            
                            System.out.println(result);      
                         }
                         System.out.println("========================================================================================================================");
-                        System.out.println("1. ¿¹¸ÅÇÏ±â");
-                        System.out.println("0. µÚ·Î°¡±â");
+                        System.out.println("1. ì˜ˆë§¤í•˜ê¸°");
+                        System.out.println("0. ë’¤ë¡œê°€ê¸°");
                         System.out.println("========================================================================================================================");
                         
-                        System.out.print("¹øÈ£ ÀÔ·Â : ");
+                        System.out.print("ë²ˆí˜¸ ì…ë ¥ : ");
                         String num2 = scan.nextLine();
                         
                         switch(num2) {
-                        //¿¹¸ÅÇÏ±â
+                        //ì˜ˆë§¤í•˜ê¸°
                         case "1":
-                           System.out.print("¹ö½º¹øÈ£ : ");
+                           System.out.print("ë²„ìŠ¤ë²ˆí˜¸ : ");
                            String busreserv = scan.nextLine();
-                           System.out.print("ÀÎ¿ø : ");
+                           System.out.print("ì¸ì› : ");
                            String count2 = scan.nextLine();
                            
                            String price = String.format("select busprice from tblbus where bus_seq = %s", busreserv);
@@ -353,9 +353,9 @@ public class BusTrain {
                               System.out.println(Integer.parseInt(result) * Integer.parseInt(count2));   
                            }
                            
-                           System.out.println("°áÁ¦¸¦ ÁøÇàÇÏ½Ã°Ú½À´Ï±î?");
-                           System.out.println("°áÁ¦¸¦ ÁøÇàÇÕ´Ï´Ù!!!");
-                           System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+                           System.out.println("ê²°ì œë¥¼ ì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+                           System.out.println("ê²°ì œë¥¼ ì§„í–‰í•©ë‹ˆë‹¤!!!");
+                           System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
                            String credit = scan.nextLine();
                            try {
                               conn = util.open();
@@ -383,10 +383,10 @@ public class BusTrain {
                            conn.close();
                            stat.close();
                            System.out.println();
-                           System.out.println("¿¹¸Å ¿Ï·á!");
-                           System.out.print("°è¼ÓÇÏ½Ã·Á¸é ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+                           System.out.println("ì˜ˆë§¤ ì™„ë£Œ!");
+                           System.out.print("ê³„ì†í•˜ì‹œë ¤ë©´ ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
                            System.out.println();
-                        //µÚ·Î°¡±â
+                        //ë’¤ë¡œê°€ê¸°
                         case "0":
                         }
                         
@@ -406,12 +406,38 @@ public class BusTrain {
                
                
             } 
-            //¿¹¸ÅÈ®ÀÎ
-            else if(sel.equals("3")) {
-               System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
-               String credit = scan.nextLine();
-               
+            //ì˜ˆë§¤í™•ì¸
+            else if(sel.equals("3")) {    
+//            	Connection conn = null;
+//          		Statement stat = null;
+//          		ResultSet rs = null;
+//          		DBUtil util = new DBUtil();
+
+          		System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
+                String credit = scan.nextLine();
+                try {
+                   conn = util.open();
+                    stat = conn.createStatement();
+                    rs = null;
+                    
+                    
+                    String sql15 =  String.format("select member_seq from tblmember where memberpw = '%s'",credit);
+                    rs = stat.executeQuery(sql15);
+                    String result = "";
+                    if ( rs.next()) {
+                       result = String.format("%s", rs.getString("member_seq")); 
+                    }
+                    
+                    printBus(result);
+                	printTrain(result);
+                    conn.close();
+                    stat.close();
+            }catch (Exception e) {
+                // TODO: handle exception
             }
+      		
+               
+            	
                
                
          }//while
@@ -420,4 +446,112 @@ public class BusTrain {
          
       }
 
-}
+      }
+      
+      
+      //ê¸°ì°¨ ì˜ˆë§¤í™•ì¸ ë©”ì†Œë“œ
+      private void printTrain(String result) {
+    		
+    		Connection conn = null;
+    		Statement stat = null;
+    		ResultSet rs = null;
+    		DBUtil util = new DBUtil();
+
+
+              try {
+                 conn = util.open();
+                  stat = conn.createStatement();
+                  rs = null;
+//                  System.out.println(result);
+                  
+                  String sql29 = String.format("select DISTINCT reserv.transreservdate as ê²°ì œì¼, train.traintype as ê¸°ì°¨ì¢…ë¥˜, a.trainstationname as ì¶œë°œì—­, to_char(train.trainstart_time,'hh24:mi') as ì¶œë°œì‹œê°„," + 
+                  		"b.trainstationname as ë„ì°©ì—­,to_char(train.trainarrive_time,'hh24:mi') as ë„ì°©ì‹œê°„," + 
+                  		"train.trainprice * reserv.transreservcount as ê°€ê²©" + 
+                  		"    from tbltransreserv reserv" + 
+                  		"        INNER join tbltrain train" + 
+                  		"            on reserv.train_seq = train.train_seq" + 
+                  		"                inner join tbltrainstation a" + 
+                  		"                    on train.strainstation_seq = a.trainstation_seq" + 
+                  		"                        inner join tbltrainstation b" + 
+                  		"                            on train.atrainstation_seq = b.trainstation_seq" + 
+                  		"                                where member_seq =%s" + 
+                  		"                                    order by reserv.transreservdate  ", result );
+
+
+                                    
+                  rs = stat.executeQuery(sql29);
+
+                  
+                  System.out.println("========================================================[ê¸°ì°¨ ì˜ˆë§¤í™•ì¸]=============================================================");
+                  System.out.println("================================================================================================================================");
+                  System.out.println("[ê²°ì œì¼]\t[ê¸°ì°¨ì¢…ë¥˜]\t[ì¶œë°œì—­]\t[ì¶œë°œì‹œê°„]\t[ë„ì°©ì—­]\t[ë„ì°©ì‹œê°„]\t[ê°€ê²©]");
+                  while (rs.next()) { //ì—­ë²ˆí˜¸, ì—­ì´ë¦„  ë„ì°©ê¸°ì¤€
+                     
+                     String result2 = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",rs.getString("ê²°ì œì¼"),rs.getString("ê¸°ì°¨ì¢…ë¥˜"),rs.getString("ì¶œë°œì—­"),rs.getString("ì¶œë°œì‹œê°„"),rs.getString("ë„ì°©ì—­"),rs.getString("ë„ì°©ì‹œê°„"),rs.getString("ê°€ê²©"));            
+                 
+                     
+                     System.out.println(result2); 
+                  }
+                  rs.close();                     
+                  conn.close();
+                  stat.close();
+       } catch (Exception e) {
+          // TODO: handle exception
+       }
+		
+	}//printTrain()
+
+      
+      //ë²„ìŠ¤ ì˜ˆë§¤í™•ì¸ ë©”ì†Œë“œ
+	private void printBus(String result) {
+  		//ê³¼ì •ë³„ ê³¼ëª© ì¶œë ¥í•˜ê¸°
+  		
+  		Connection conn = null;
+  		Statement stat = null;
+  		ResultSet rs = null;
+  		DBUtil util = new DBUtil();
+
+
+            try {
+               conn = util.open();
+                stat = conn.createStatement();
+                rs = null;
+//                System.out.println(result);
+                
+                String sql29 = String.format("select DISTINCT  reserv.transreservdate as ê²°ì œì¼,b.busstationloca as ì¶œë°œì§€, to_char(bus.busstarttime,'hh24:mi') as ì¶œë°œì‹œê°„,a.busstationloca as ë„ì°©ì§€,   bus.bustime as ì†Œìš”ì‹œê°„,bus.busprice * reserv.transreservcount as ê°€ê²©" + 
+                      "    from tbltransreserv reserv" + 
+                      "        INNER join tblbus bus" + 
+                      "            on reserv.bus_seq = bus.bus_seq            " + 
+                      "                inner join tblbusstation a" + 
+                      "                    on bus.abusstation_seq2 = a.busstation_seq" + 
+                      "                        inner join tblbusstation b" + 
+                      "                            on bus.sbusstation_seq = b.busstation_seq" + 
+                      "                                where member_seq = %s " + 
+                      "                                    order by reserv.transreservdate", result );
+
+
+                                  
+                rs = stat.executeQuery(sql29);
+
+                
+                System.out.println("========================================================[ë²„ìŠ¤ ì˜ˆë§¤í™•ì¸]=============================================================");
+                System.out.println("================================================================================================================================");
+                System.out.println("[ê²°ì œì¼]\t[ì¶œë°œì§€]\t[ì¶œë°œì‹œê°„]\t[ë„ì°©ì§€]\t[ì†Œìš”ì‹œê°„]\t[ê°€ê²©]");
+                while (rs.next()) { //ì—­ë²ˆí˜¸, ì—­ì´ë¦„  ë„ì°©ê¸°ì¤€
+                   
+                   String result2 = String.format("%s\t%s\t%s\t%s\t%s\t%s",rs.getString("ê²°ì œì¼"),rs.getString("ì¶œë°œì§€"),rs.getString("ì¶œë°œì‹œê°„"),rs.getString("ë„ì°©ì§€"),rs.getString("ì†Œìš”ì‹œê°„"),rs.getString("ê°€ê²©"));            
+               
+                   
+                   System.out.println(result2); 
+                }
+                rs.close();                     
+                conn.close();
+                stat.close();
+     } catch (Exception e) {
+        // TODO: handle exception
+     }
+  }
+        
+
+  		
+  	}//printBus

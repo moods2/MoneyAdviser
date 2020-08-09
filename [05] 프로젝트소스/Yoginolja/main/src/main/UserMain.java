@@ -24,7 +24,7 @@ public class UserMain {
 		while(true) {
 			
 		System.out.println("============================================================");
-		System.out.println("\t\t[À¯Àú ·Î±×ÀÎ]");
+		System.out.println("\t\t[ìœ ì € ë¡œê·¸ì¸]");
 		System.out.println("============================================================");
 		
 		System.out.print("\t\tid : ");
@@ -32,15 +32,15 @@ public class UserMain {
 		System.out.print("\t\tpw : ");
 		pw = scan.nextLine();
 		
-		//·Î±×ÀÎ À¯È¿¼º °Ë»ç
+		//ë¡œê·¸ì¸ ìœ íš¨ì„± ê²€ì‚¬
 		Connection conn = null;
 		Statement stat = null;
 		ResultSet rs = null;
 		
-		ArrayList<String> idList = new ArrayList<String>(3); //id ´ãÀ» list
-		ArrayList<String> pwdList = new ArrayList<String>(3); //pwd ´ãÀ» list
+		ArrayList<String> idList = new ArrayList<String>(3); //id ë‹´ì„ list
+		ArrayList<String> pwdList = new ArrayList<String>(3); //pwd ë‹´ì„ list
 		
-		int idNum = 0, answer = 0; //idµç ¸ñ·ÏÀÇ ¹øÈ£¿Í ·Î±×ÀÎ »óÅÂ ¹İÈ¯ º¯¼ö
+		int idNum = 0, answer = 0; //idë“  ëª©ë¡ì˜ ë²ˆí˜¸ì™€ ë¡œê·¸ì¸ ìƒíƒœ ë°˜í™˜ ë³€ìˆ˜
 		
 		try {
 
@@ -51,7 +51,7 @@ public class UserMain {
 			
 			rs = stat.executeQuery(sql);
 			
-			while (rs.next()) { // Å×ÀÌºí id,pwd °¡Á®¿À±â
+			while (rs.next()) { // í…Œì´ë¸” id,pwd ê°€ì ¸ì˜¤ê¸°
 				
 				String result = rs.getString("id") + "\t" + rs.getString("pwd");
 				
@@ -60,38 +60,38 @@ public class UserMain {
 			}
 			
 			for(int i=0; i<idList.size(); i++) {
-				if(idList.get(i).equals(id)){ //id ÀÖÀ» °æ¿ì
+				if(idList.get(i).equals(id)){ //id ìˆì„ ê²½ìš°
 					idNum = i;
 						
 				}else if(!idList.get(i).equals(id)){
-					//¾ø´Â id
+					//ì—†ëŠ” id
 					answer = 1;
 				}
 			}
 
-			if(pwdList.get(idNum).equals(pw)){ //pw ÀÖÀ» °æ¿ì
-				//·Î±×ÀÎ ¼º°ø
+			if(pwdList.get(idNum).equals(pw)){ //pw ìˆì„ ê²½ìš°
+				//ë¡œê·¸ì¸ ì„±ê³µ
 				System.out.println("============================================================");
-				System.out.printf("·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.\n");
+				System.out.printf("ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 
 				menu();
 				return;
 				
 			} else if (!pwdList.get(idNum).equals(pw)){
-				//Æ²¸° pwd
+				//í‹€ë¦° pwd
 				answer = 2;
 			}
 			
-			//¿À·ù ¸Ş¼¼Áö Ãâ·Â
+			//ì˜¤ë¥˜ ë©”ì„¸ì§€ ì¶œë ¥
 			if(answer == 1) {
 				System.out.println("============================================================");
-				System.out.println("¾ø´Â idÀÔ´Ï´Ù.");
-				//´Ù½Ã ·Î±×ÀÎ
+				System.out.println("ì—†ëŠ” idì…ë‹ˆë‹¤.");
+				//ë‹¤ì‹œ ë¡œê·¸ì¸
 				return;
 			}else if(answer == 2) {
 				System.out.println("============================================================");
-				System.out.println("ºñ¹Ğ¹øÈ£°¡ ¿ÇÁö ¾Ê½À´Ï´Ù.");
-				//´Ù½Ã ·Î±×ÀÎ
+				System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ì˜³ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+				//ë‹¤ì‹œ ë¡œê·¸ì¸
 				return;
 			}
 			
@@ -113,34 +113,46 @@ public class UserMain {
 	}
 
 	private static void menu() {
-		//¸ŞÀÎ ¸Ş´º
+		//ë©”ì¸ ë©”ë‰´
 		
 		boolean flag = true;
 		
 		while(flag) {
 		System.out.println("============================================================");
-		System.out.println("\t\t[¸Ş´º]");
+		System.out.println("\t\t[ë©”ë‰´]");
 		System.out.println("============================================================");
-		System.out.println("\t\t 1. ±³ÅëÆí ");
-		
+		System.out.println("\t\t 1. êµí†µ ");
+		System.out.println("\t\t 2. ìˆ™ë°• ");
+		System.out.println("\t\t 3. ê´€ê´‘ ");
 		System.out.println();
-		System.out.println("\t\t0. ·Î±×¾Æ¿ô");
+		System.out.println("\t\t0. ë¡œê·¸ì•„ì›ƒ");
 		System.out.println("============================================================");
 		
-		System.out.print("\t\tÀÔ·Â : ");
+		System.out.print("\t\tì…ë ¥ : ");
 		String num = scan.nextLine();
 		
 		switch (num) {
-
+		//êµí†µ
 		case "1":
 			BusTrain bt = new BusTrain();
 			bt.printBusTrain();
 			break;
 			
-		
+		//ìˆ™ë°•
+		case "2":
+			HotelUser h = new HotelUser();
+			h.printHotel();
+			break;
+		//ê´€ê´‘
+		case "3":
+			EnjoyUser e = new EnjoyUser();
+			e.enjoyMain();
+			break;
 			
 		case "0":
-			//·Î±×¾Æ¿ô
+			
+			flag=false;
+			//ë¡œê·¸ì•„ì›ƒ
 		
 			}
 		}
