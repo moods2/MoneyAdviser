@@ -71,23 +71,19 @@
     </tr>
     <tr>
         <th>프로젝트 기획</th>
-        <th colspan="2">개요작성</th>
-        <th colspan="4">회의, 의견제안</th>
+        <th colspan="5">개요작성, 회의, 의견제안</th>        
     </tr>
     <tr>
         <th>요구분석</th>
-        <th colspan="2">문서작성,회의</th>
-        <th colspan="4">회의, 의견제안</th>
+        <th colspan="5">문서작성, 회의, 의견제안</th>        
     </tr>
     <tr>
         <th>데이터설계</th>
-        <th colspan="2">문서작성,회의</th>
-        <th colspan="4">회의, 의견제안</th>
+        <th colspan="5">문서작성, 회의, 의견제안</th>        
     </tr>
     <tr>
         <th>기능명세서</th>
-        <th colspan="2">문서작성,회의</th>
-        <th colspan="4">회의, 의견제안</th>
+        <th colspan="5">문서작성, 회의, 의견제안</th>        
     </tr>
     <tr>
         <th>화면설계</th>
