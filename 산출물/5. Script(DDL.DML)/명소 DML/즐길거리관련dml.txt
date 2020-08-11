@@ -1,0 +1,47 @@
+-- 전체 지역 즐길거리(지역, 즐길거리 이름, 사진, 설명)
+select l.localname, e.enjoyname, e.enjoypic, e.enjoycontent
+from tbllocal l
+    inner join tblenjoy e
+        on l.local_seq = e.local_seq;
+
+-- 지역 선택 후 즐길거리(즐길거리 이름, 사진, 설명)
+select e.enjoyname, e.enjoypic, e.enjoycontent
+from tbllocal l -- 지역
+    inner join tblenjoy e --음식점
+        on l.local_seq = e.local_seq
+            where l.localname = '서울';
+            --where l.local_seq = 1;
+
+
+-- 지역선택 - 즐길거리 - 1.후기보기(즐길거리 이름, 회원아이디, 후기)
+select e.enjoyname, m.memberid, er.enjoyreview
+from tblenjoyreview er -- 즐길거리 후기
+    inner join tblmember m -- 회원
+        on er.member_seq = m.member_seq
+            inner join tblenjoy e -- 즐길거리
+                on er.enjoy_seq = e.enjoy_seq;
+                    --where enjoyname = '즐길거리 이름';
+
+
+-- 지역선택 - 즐길거리 - 2.후기작성
+insert into tblenjoyreview values (enjoyreview_seq.nextval, '후기', 즐길거리 번호, 회원번호);
+
+
+
+-- 지역선택 - 즐길거리 - 3.예약하기
+insert into tblenjoyreserv values (enjoyreserv_seq.nextval, to_date('xxxx-xx-xx', 'yyyy-mm-dd'), 인원, 즐길거리 번호, 회원번호);
+
+
+
+-- 베스트(지역, 즐길거리 이름, 음식점 이름, 숙박시설 이름)
+select l.localname, e.enjoyname, f.foodname, h.hotelname 
+from tblbesttourspot b -- 베스트
+    inner join tblenjoy e -- 즐길거리
+        on b.enjoy_seq = e.enjoy_seq
+            inner join tblfood f -- 음식점
+                on b.food_seq = f.food_seq
+                    inner join tblhotel h -- 숙박시설
+                        on h.hotel_seq = b.hotel_seq
+                            inner join tbllocal l -- 지역
+                                on b.local_seq = l.local_seq
+                                    where b.local_seq = 지역번호;

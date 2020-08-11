@@ -1,0 +1,43 @@
+-- 음식점 추가
+insert into tblfood values (food_seq.nextval, '음식점 이름', '음식점 사진', '음식점 설명', 지역번호);
+
+-- 음식점 삭제
+delete from tblfood where 바꿀 위치;
+
+-- 음식점 예약 조회(전체 회원)
+select f.foodname as 음식점이름, m.membername as 회원이름, m.membertel as 회원전화번호, fr.foodreservcount as 인원, to_char(fr.foodreservdate, 'yyyy-mm-dd') as 날짜
+from tblfoodreserv fr -- 음식점예약
+    inner join tblmember m-- 회원
+        on m.member_seq = fr.member_seq
+            inner join tblfood f -- 음식점
+                on fr.food_seq = f.food_seq;
+
+-- 음식점 후기 조회(전체 회원)
+select fr.foodreview_seq as 음식점후기번호, m.memberid as 회원아이디, f.foodname as 음식점이름, fr.foodreview as 음식점후기
+from tblfoodreview fr -- 음식점 후기
+    inner join tblmember m -- 회원
+        on fr.member_seq = m.member_seq
+            inner join tblfood f -- 음식점
+                on fr.food_seq = f.food_seq;
+
+-- 즐길거리 추가
+insert into tblenjoy values (enjoy_seq.nextval, '즐길거리 이름', '즐길거리 사진', '즐길거리 설명', 지역번호);
+
+-- 즐길거리 삭제
+delete from tblenjoy where 바꿀 위치;
+
+-- 즐길거리 예약 조회(전체 회원)
+select e.enjoyname as 즐길거리이름, m.membername as 회원이름, m.membertel as 회원전화번호, er.enjoyreservcount as 인원, to_char(er.enjoyreservdate, 'yyyy-mm-dd') as 날짜
+from tblenjoyreserv er -- 즐길거리예약
+    inner join tblmember m-- 회원
+        on m.member_seq = er.member_seq
+            inner join tblenjoy e -- 즐길거리
+                on er.enjoy_seq = e.enjoy_seq;
+
+-- 즐길거리 후기 조회(전체 회원)
+select er.enjoyreview_seq as 즐길거리후기번호, m.memberid as 회원아이디, e.enjoyname as 즐길거리이름, er.enjoyreview as 즐길거리후기
+from tblenjoyreview er -- 즐길거리 후기
+    inner join tblmember m -- 회원
+        on er.member_seq = m.member_seq
+            inner join tblenjoy e -- 음식점
+                on er.enjoy_seq = e.enjoy_seq;
