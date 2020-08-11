@@ -1,6 +1,6 @@
 # YOGINOLJA
 
-![메인](https://user-images.githubusercontent.com/65211288/84998018-3e79e300-b18a-11ea-957e-80b2acba867a.png)
+![콘솔 메인](https://user-images.githubusercontent.com/65211288/89854595-3f018980-dbcf-11ea-9992-8d2b1df4fcc5.png)
 
 
 
@@ -55,8 +55,8 @@
 
 관계형 데이터베이스 기반의 여행사이트 운영 프로그램입니다.
 
- ### 👋 Admin
- ![관리자](https://user-images.githubusercontent.com/65211288/84998831-500fba80-b18b-11ea-8693-5bf7ed5c55e1.gif)
+ ### 👋 교통
+![교통](https://user-images.githubusercontent.com/65211288/89854631-580a3a80-dbcf-11ea-9557-10a70b1f11c5.gif)
  ### 👋 Student
  ![교육생](https://user-images.githubusercontent.com/65211288/85092567-e0e6a480-b224-11ea-8ae1-5c6f002032cb.gif)
  ### 👋 Teacher
