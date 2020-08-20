@@ -57,10 +57,10 @@
 
  ### 👋 교통
 ![교통](https://user-images.githubusercontent.com/65211288/89854631-580a3a80-dbcf-11ea-9557-10a70b1f11c5.gif)
- ### 👋 Student
- ![교육생](https://user-images.githubusercontent.com/65211288/85092567-e0e6a480-b224-11ea-8ae1-5c6f002032cb.gif)
- ### 👋 Teacher
-![교사](https://user-images.githubusercontent.com/65211288/85092653-1f7c5f00-b225-11ea-8242-c6f5def17d17.gif)
+ ### 👋 명소
+ ![명소](https://user-images.githubusercontent.com/65211288/90717946-c5af1880-e2eb-11ea-8ca1-0782df02ee14.gif)
+ ### 👋 숙박
+![숙박](https://user-images.githubusercontent.com/65211288/90717975-d52e6180-e2eb-11ea-9bee-9a99fe7662b6.gif)
 ### 📑 Role & Member
 
 
